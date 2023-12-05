@@ -1,4 +1,9 @@
+import { IsEnum, MinLength } from 'class-validator';
+
 export class CreateUserDto {
+  @MinLength(3)
   name: string;
-  id: number;
+
+  @IsEnum(['developer', 'tester'], { message: 'Assign correct role' })
+  role: 'developer' | 'tester';
 }
